@@ -13,6 +13,7 @@
 		D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D65E1DD4B65300025F27 /* forumListCell.swift */; };
 		D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D6631DD4BAC500025F27 /* forumListController.swift */; };
 		D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */; };
+		D0592BEE1DDAFB5200D3CEF6 /* NoMeatPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */; };
 		D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */; };
 		D0818FCF1DBE49B0002D3DB1 /* HotAndNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */; };
 		D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD01DBE49B0002D3DB1 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		D025D65E1DD4B65300025F27 /* forumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListCell.swift; sourceTree = "<group>"; };
 		D025D6631DD4BAC500025F27 /* forumListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListController.swift; sourceTree = "<group>"; };
 		D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newSiteCell.swift; sourceTree = "<group>"; };
+		D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoMeatPageController.swift; sourceTree = "<group>"; };
 		D0818FC91DBE49B0002D3DB1 /* meatme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meatme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotAndNewViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				D00D30231DD997AA00275ADC /* SecectImageController.swift */,
+				D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */,
 				D0EF9A691DD6F1C90060A67B /* FindMeatCameraController.swift */,
 				D02439DA1DD958A70009ED17 /* LoadingViewController.swift */,
 			);
@@ -286,6 +289,7 @@
 				D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */,
 				D0DE33151DCEF44E00A3D126 /* hotSiteCell.swift in Sources */,
 				D0EF9A6A1DD6F1C90060A67B /* FindMeatCameraController.swift in Sources */,
+				D0592BEE1DDAFB5200D3CEF6 /* NoMeatPageController.swift in Sources */,
 				D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */,
 				D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */,
 				D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */,

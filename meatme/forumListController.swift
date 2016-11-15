@@ -62,6 +62,10 @@ class forumListController: UIViewController{
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
+        //把tableView的row高度設定為依照內容自動調整
+        self.forumListTableView.rowHeight = UITableViewAutomaticDimension
+        //這邊是給一個可能預測的高度
+        self.forumListTableView.estimatedRowHeight = 120
         self.forumListTableView.delegate = self
         self.forumListTableView.dataSource = self
         

@@ -13,18 +13,24 @@ class FindMeatCameraController: UIViewController{
     //GoogleVision變數
     let imagePicker = UIImagePickerController()
     let session = URLSession.shared
-//    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var labelResults: UITextView!
-    @IBOutlet weak var faceResults: UITextView!
     //從google拿到的data
     var resultOfPicData:Data?
-    var meatMeSeverToken:String?
+    var meatMeSeverToken = "x-zKWmbciVYybrDxxh1A"
+    var meatMeSeverUrl = "http://139.162.24.178/api/v1/plants/recognize?auth_token="
     var googleAPIKey = "AIzaSyA--Sr2_nkJIPnDWQDz-2-YSebGLJC4S1Q"
     var googleURL: URL {
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
     //從meatme Server拿到的Data
     var selectedDataAndArticleData:JSON?
+    var backMessageFromServer = "有什麼事情出錯了喔"
+    //是否第一次啟動相機的布林
+    var isFirstLunchCamera = true
+    //GoogleVision解析後顯示在畫面上的結果
+    //    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var nowLoading: UILabel!
+    @IBOutlet weak var labelResults: UITextView!
+    @IBOutlet weak var faceResults: UITextView!
     //讀取手機照片的按鈕
     @IBOutlet weak var loadImageButtonTapped: UIButton!
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
@@ -36,23 +42,21 @@ class FindMeatCameraController: UIViewController{
     @IBOutlet weak var postJSON: UIButton!
     @IBAction func postJSON(_ sender: UIButton) {
         //        getTokenFromServer(loginUrlString: "http://139.162.24.178/api/v1/login")
-        toServerRequest(urlString: "http://139.162.24.178/api/v1/plants/recognize?auth_token=", httpMethod: "POST", contentType: "application/json",token: "MpsphxuvN-mXHnvxRspS")
+        toServerRequest(urlString: meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: meatMeSeverToken)
     }
 //轉換頁面
     @IBAction func goToSelectImagePage(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToSelectImagePage", sender: nil)
     }
-    
     //拍照相關
-    //拍完照後要顯示在這
-    @IBOutlet weak var meatImageView: UIImageView!
-    //是否第一次啟動相機的布林
-    var isFirstLunchCamera = true
     //拍照按鈕
     @IBAction func takePhotoButton(_ sender: UIButton) {
         takePhoto()
     }
     @IBOutlet weak var takePhotoButton: UIButton!
+    //拍完照或從相簿挑選照片後要顯示在這
+    @IBOutlet weak var meatImageView: UIImageView!
+
     
     
     
@@ -76,7 +80,6 @@ class FindMeatCameraController: UIViewController{
     override func viewDidLayoutSubviews() {
            }
     override func viewWillDisappear(_ animated: Bool) {
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -85,10 +88,25 @@ class FindMeatCameraController: UIViewController{
         if segue.identifier == "GoToSelectImagePage"{
             let destination = segue.destination as! SecectImageController
             destination.getDataFromServer = selectedDataAndArticleData
+            destination.chooseImage = meatImageView.image
+        }
+        if segue.identifier == "GoNoMeatPage"{
+            let destination = segue.destination as! NoMeatPageController
+            destination.chooseImage = meatImageView.image
+            if backMessageFromServer == "notPlant"{
+                destination.errorMessage = "您拍的不是植物喔，請再拍一次"
+            }
+            else if backMessageFromServer == "isPerson"{
+                destination.errorMessage = "請問您是在自拍嗎？"
+            }
+            else{
+                destination.errorMessage = "我不知道您拍到了什麼"
+            }
         }
     }
-    
 }
+
+
 //拍照功能相關方法
 extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func takePhoto(){
@@ -96,11 +114,12 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
         present(imagePicker, animated: true, completion: nil)
         imagePicker.delegate = self
     }
-    //使用者拍完照片後按下使用
+    //啟動imagePickerController後按下使用後的行為
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if imagePicker.sourceType == .camera{
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             meatImageView.image = image
+           
 //            let data = UIImageJPEGRepresentation(image, 0.9)
 //            let url = setSavePhotoUrl()
 //            do{
@@ -112,48 +131,39 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
             let binaryImageData = base64EncodeImage(image)
             //傳送給Google解析
             createRequest(with: binaryImageData)
+            //Loading按鈕顯示，拍照跟讀相簿按鈕消失
+            loadingStatus()
+            //3秒後傳送request給後台
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
+                self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
+                timer.invalidate()
+            })
+            
             self.dismiss(animated: true, completion: {
-//                //按下使用照片後把LodingLabel畫面顯示2秒
-//                //透明Loading頁面
-//                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//                let loadingViewController = storyBoard.instantiateViewController(withIdentifier: "LoadingPage") as! LoadingViewController
-//                //把Loading畫面蓋上去
-//                self.present(loadingViewController, animated: false, completion: nil)
-//                loadingViewController.loadingLabel.isHidden = false
-//                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: {
-//                    (timer:Timer) in
-//                    //顯示出結果的動畫
-//                    UIView.transition(with: self.view, duration: 0.5, options: UIViewAnimationOptions.transitionCurlDown, animations: {
-////                        loadingViewController.loadingLabel.isHidden = true
-//                        self.postJSON.isHidden = false
-//                        self.loadImageButtonTapped.isHidden = false
-//                        self.labelResults.isHidden = false
-//                        self.faceResults.isHidden = false
-//                        self.meatImageView.isHidden = false
-//                        self.takePhotoButton.isHidden = false
-//                        
-//                    }, completion: nil)
-//                    //關掉timer
-//                    timer.invalidate()
-//                })
-     
             })
         }
         //啟動相簿
         if imagePicker.sourceType == .photoLibrary{
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                meatImageView.contentMode = .scaleAspectFit
                 meatImageView.image = pickedImage
-                
-                // Base64 encode the image and create the request
+                //轉成Base64格式後傳給Google後得到Request
                 let binaryImageData = base64EncodeImage(pickedImage)
                 createRequest(with: binaryImageData)
+                //Loading按鈕和圖片顯示，拍照跟讀相簿按鈕消失
+                loadingStatus()
+                //3秒後傳送request給後台
+                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
+                    self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
+                    timer.invalidate()
+                })
             }
             dismiss(animated: true, completion: nil)
         }
     }
     //imagePickerController按下取消執行的動作
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //Loading按鈕消失，拍照跟讀相簿按鈕顯示
+        normalStatus()
         dismiss(animated: true, completion: nil)
     }
     //產生一個照片儲存到Document的儲存路徑
@@ -188,8 +198,8 @@ extension FindMeatCameraController {
             
 //            self.spinner.stopAnimating()
            
-            self.labelResults.isHidden = false
-            self.faceResults.isHidden = false
+//            self.labelResults.isHidden = false
+//            self.faceResults.isHidden = false
             self.faceResults.text = ""
             
             // Check for errors
@@ -303,11 +313,11 @@ extension FindMeatCameraController {
                 "features": [
                     [
                         "type": "LABEL_DETECTION",
-                        "maxResults": 10
+                        "maxResults": 6
                     ],
                     [
                         "type": "FACE_DETECTION",
-                        "maxResults": 10
+                        "maxResults": 6
                     ]
                 ]
             ]
@@ -339,7 +349,7 @@ extension FindMeatCameraController {
     
     
 }
-//MeatME連接用
+//連接MeatME用
 extension FindMeatCameraController{
     //傳送request給MeatMeServer:
     func toServerRequest(urlString:String,httpMethod:String,contentType:String,token:String){
@@ -348,19 +358,32 @@ extension FindMeatCameraController{
         var postRequest = URLRequest(url: serverUrl!)
         //指定postRequest.httpMethod為”POST”
         postRequest.httpMethod = httpMethod
-        //在POST的情況底下，如果沒特別著名的話預設是application/x-www-form-urlencoded的Content-Type
+        //在POST的情況底下，如果沒特別注名的話預設是application/x-www-form-urlencoded的Content-Type
         postRequest.addValue(contentType, forHTTPHeaderField: "Content-Type")
         //把從Google拿到的data包給server
         let postTask = URLSession.shared.uploadTask(with: postRequest, from: resultOfPicData, completionHandler:{ (data:Data?, response:URLResponse?, error:Error?) -> Void in
             if error != nil{
                 print("post出錯")
+                self.normalStatus()
                 return
             }
             if let backData = data{
                 //把結果轉成JSON存入selectedDataAndArticleData
                 self.selectedDataAndArticleData = JSON(data: backData)
                 let jsonBackData =  JSON(data: backData).dictionaryObject
-                print("\n=======\(jsonBackData)============\n")
+                print("\n==========\(jsonBackData)==========\n")
+                //Loading按鈕消失，拍照跟讀相簿按鈕顯示(要用主佇列的非同步進行)
+                DispatchQueue.main.async {
+                    self.normalStatus()
+                    self.backMessageFromServer = JSON(data: backData)["message"].stringValue
+                    print(self.backMessageFromServer)
+                    if self.backMessageFromServer == "notPlant"||self.backMessageFromServer == "isPerson"{
+                        self.performSegue(withIdentifier: "GoNoMeatPage", sender: nil)
+                    }
+                    else if self.backMessageFromServer == "isPlant"{
+                        self.performSegue(withIdentifier: "GoToSelectImagePage", sender: nil)
+                    }
+                }
             }
         })
         postTask.resume()
@@ -393,6 +416,23 @@ extension FindMeatCameraController{
     }
 }
 
+//
+extension FindMeatCameraController{
+    func loadingStatus(){
+        //Loading按鈕和圖片顯示，拍照跟讀相簿按鈕消失
+        self.nowLoading.isHidden = false
+        self.meatImageView.isHidden = false
+        self.loadImageButtonTapped.isHidden = true
+        self.takePhotoButton.isHidden = true
+    }
+    func normalStatus(){
+        //Loading按鈕和圖片消失，拍照跟讀相簿按鈕顯示
+        self.nowLoading.isHidden = true
+        self.meatImageView.isHidden = false
+        self.loadImageButtonTapped.isHidden = false
+        self.takePhotoButton.isHidden = false
+    }
+}
 
 
 

@@ -11,6 +11,7 @@ import SwiftyJSON
 import SDWebImage
 class SecectImageController: UITableViewController {
     var getDataFromServer:JSON?
+    var chooseImage = UIImage(named: "讀取中")
     @IBOutlet weak var chooseMeatImageView: UIImageView!
     @IBOutlet weak var firstMeatIgeView: UIImageView!
     @IBOutlet weak var firstMeatLabel: UILabel!
@@ -49,15 +50,16 @@ extension SecectImageController{
         }
     }
     func inputData(){
-        chooseMeatImageView.sd_setImage(with: URL(string:"https://goo.gl/Wvwpvk"), placeholderImage: nil)
-        let imageUrl = URL(string:getDataFromServer!["plants"][0]["plantPicture"].stringValue)
-        firstMeatIgeView.sd_setImage(with: imageUrl,placeholderImage: nil)
-        firstMeatLabel.text = getDataFromServer!["plants"][0]["plantName"].stringValue
-        print(getDataFromServer!["plants"][0]["plantName"].stringValue)
+        chooseMeatImageView.image = chooseImage
+        let imageUrl1 = URL(string:getDataFromServer!["plants"][0]["plantPicture"].stringValue)
+        firstMeatIgeView.sd_setImage(with: imageUrl1,placeholderImage: UIImage(named: "讀取中"))
+        firstMeatLabel.text = getDataFromServer!["plants"][0]["plantDescription"].stringValue
+        print(getDataFromServer!["plants"][0]["plantDescription"].stringValue)
         let imageUrl2 = URL(string:getDataFromServer!["plants"][1]["plantPicture"].stringValue)
-        secondMeatImageView.sd_setImage(with: imageUrl2,placeholderImage: nil)
-        secondMeatLabel.text = getDataFromServer!["plants"][1]["plantName"].stringValue
-        thirdMeatImageView.image = UIImage(named: SecectImageData[2]["plantPicture"]!)
-        thirdMeatLabel.text = getDataFromServer!["plants"][2]["plantName"].stringValue
+        secondMeatImageView.sd_setImage(with: imageUrl2,placeholderImage: UIImage(named: "讀取中"))
+        secondMeatLabel.text = getDataFromServer!["plants"][1]["plantDescription"].stringValue
+        let imageUrl3 = URL(string:getDataFromServer!["plants"][2]["plantPicture"].stringValue)
+        thirdMeatImageView.sd_setImage(with: imageUrl3,placeholderImage: UIImage(named: "讀取中"))
+        thirdMeatLabel.text = getDataFromServer!["plants"][2]["plantDescription"].stringValue
     }
 }
