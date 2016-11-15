@@ -7,7 +7,7 @@ target 'meatme' do
   pod 'Alamofire','~> 4.0.1'
   pod 'GoogleMaps','~> 2.1.0'
   pod 'SwiftyJSON','~> 3.1.1'
-
+  pod 'SDWebImage', '~> 3.8'
   # Pods for meatme
 
 end

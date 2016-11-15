@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6ED06DBD608E4E644E80D686 /* Pods_meatme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C18E85BB6CD38A2B2CAB207 /* Pods_meatme.framework */; };
+		D00D30241DD997AA00275ADC /* SecectImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D30231DD997AA00275ADC /* SecectImageController.swift */; };
+		D02439DB1DD958A70009ED17 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02439DA1DD958A70009ED17 /* LoadingViewController.swift */; };
 		D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D65E1DD4B65300025F27 /* forumListCell.swift */; };
 		D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D6631DD4BAC500025F27 /* forumListController.swift */; };
 		D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */; };
@@ -19,12 +21,19 @@
 		D0DE33151DCEF44E00A3D126 /* hotSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */; };
 		D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */; };
 		D0E5C4301DD2D59800DD68A9 /* MapTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C42F1DD2D59800DD68A9 /* MapTask.swift */; };
+		D0EF9A611DD55B0D0060A67B /* forumArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A601DD55B0D0060A67B /* forumArticleCell.swift */; };
+		D0EF9A631DD55B720060A67B /* forumArticleCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */; };
+		D0EF9A651DD567110060A67B /* forumArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A641DD567110060A67B /* forumArticleController.swift */; };
+		D0EF9A6A1DD6F1C90060A67B /* FindMeatCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A691DD6F1C90060A67B /* FindMeatCameraController.swift */; };
+		D0F015031DD863200093D5CD /* 多肉植物01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0F015021DD863200093D5CD /* 多肉植物01.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C18E85BB6CD38A2B2CAB207 /* Pods_meatme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meatme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC04463B6985A398ECDE9AF /* Pods-meatme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.release.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.release.xcconfig"; sourceTree = "<group>"; };
 		94D0D0397DAE8F1E13D6FDC0 /* Pods-meatme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.debug.xcconfig"; sourceTree = "<group>"; };
+		D00D30231DD997AA00275ADC /* SecectImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecectImageController.swift; sourceTree = "<group>"; };
+		D02439DA1DD958A70009ED17 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D025D65D1DD49A5900025F27 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		D025D65E1DD4B65300025F27 /* forumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListCell.swift; sourceTree = "<group>"; };
 		D025D6631DD4BAC500025F27 /* forumListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListController.swift; sourceTree = "<group>"; };
@@ -39,6 +48,11 @@
 		D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotSiteCell.swift; sourceTree = "<group>"; };
 		D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D0E5C42F1DD2D59800DD68A9 /* MapTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTask.swift; sourceTree = "<group>"; };
+		D0EF9A601DD55B0D0060A67B /* forumArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleCell.swift; sourceTree = "<group>"; };
+		D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleCommentCell.swift; sourceTree = "<group>"; };
+		D0EF9A641DD567110060A67B /* forumArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleController.swift; sourceTree = "<group>"; };
+		D0EF9A691DD6F1C90060A67B /* FindMeatCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMeatCameraController.swift; sourceTree = "<group>"; };
+		D0F015021DD863200093D5CD /* 多肉植物01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "多肉植物01.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				D025D65E1DD4B65300025F27 /* forumListCell.swift */,
+				D0EF9A601DD55B0D0060A67B /* forumArticleCell.swift */,
+				D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */,
 				D025D6631DD4BAC500025F27 /* forumListController.swift */,
+				D0EF9A641DD567110060A67B /* forumArticleController.swift */,
 			);
 			name = Forum;
 			sourceTree = "<group>";
@@ -100,7 +117,7 @@
 		D0818FCB1DBE49B0002D3DB1 /* meatme */ = {
 			isa = PBXGroup;
 			children = (
-				D0E5C42E1DD2D57E00DD68A9 /* Map */,
+				D0EF9A681DD6F1970060A67B /* FindMeatCamera */,
 				D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */,
 				D025D6601DD4B65C00025F27 /* Forum */,
 				D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */,
@@ -110,6 +127,8 @@
 				D0818FD31DBE49B0002D3DB1 /* Assets.xcassets */,
 				D0818FD51DBE49B0002D3DB1 /* LaunchScreen.storyboard */,
 				D0818FD81DBE49B0002D3DB1 /* Info.plist */,
+				D0F015021DD863200093D5CD /* 多肉植物01.jpg */,
+				D0E5C42E1DD2D57E00DD68A9 /* Map */,
 				D025D65D1DD49A5900025F27 /* MyPlayground.playground */,
 			);
 			path = meatme;
@@ -122,6 +141,16 @@
 				D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		D0EF9A681DD6F1970060A67B /* FindMeatCamera */ = {
+			isa = PBXGroup;
+			children = (
+				D00D30231DD997AA00275ADC /* SecectImageController.swift */,
+				D0EF9A691DD6F1C90060A67B /* FindMeatCameraController.swift */,
+				D02439DA1DD958A70009ED17 /* LoadingViewController.swift */,
+			);
+			name = FindMeatCamera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +219,7 @@
 				D0818FD71DBE49B0002D3DB1 /* LaunchScreen.storyboard in Resources */,
 				D0818FD41DBE49B0002D3DB1 /* Assets.xcassets in Resources */,
 				D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */,
+				D0F015031DD863200093D5CD /* 多肉植物01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,12 +279,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0818FCF1DBE49B0002D3DB1 /* HotAndNewViewController.swift in Sources */,
+				D0EF9A651DD567110060A67B /* forumArticleController.swift in Sources */,
 				D0E5C4301DD2D59800DD68A9 /* MapTask.swift in Sources */,
+				D0EF9A611DD55B0D0060A67B /* forumArticleCell.swift in Sources */,
+				D00D30241DD997AA00275ADC /* SecectImageController.swift in Sources */,
 				D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */,
 				D0DE33151DCEF44E00A3D126 /* hotSiteCell.swift in Sources */,
+				D0EF9A6A1DD6F1C90060A67B /* FindMeatCameraController.swift in Sources */,
 				D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */,
 				D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */,
 				D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */,
+				D0EF9A631DD55B720060A67B /* forumArticleCommentCell.swift in Sources */,
+				D02439DB1DD958A70009ED17 /* LoadingViewController.swift in Sources */,
 				D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

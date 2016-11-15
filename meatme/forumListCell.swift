@@ -12,6 +12,7 @@ class forumListCell: UITableViewCell {
     
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleTitle: UILabel!
+    @IBOutlet weak var articleCategory: UILabel!
     @IBOutlet weak var articleContent: UILabel!
     @IBOutlet weak var articleAuthorName: UILabel!
     @IBOutlet weak var articleDate: UILabel!
