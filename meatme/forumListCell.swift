@@ -26,6 +26,11 @@ class forumListCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        //調整按下Cell後的背景顏色
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 121.0/255.0, green: 180.0/255.0, blue: 146.0/255.0, alpha: 0.5)
+        selectedBackgroundView = view
+        
 
         // Configure the view for the selected state
     }

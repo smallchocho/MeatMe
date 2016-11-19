@@ -21,6 +21,7 @@ class NoMeatPageController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
 
 }

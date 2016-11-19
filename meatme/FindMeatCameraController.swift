@@ -15,7 +15,7 @@ class FindMeatCameraController: UIViewController{
     let session = URLSession.shared
     //從google拿到的data
     var resultOfPicData:Data?
-    var meatMeSeverToken = "x-zKWmbciVYybrDxxh1A"
+    var meatMeSeverToken = "zCuw_Kf_yKpDZNArfM3f"
     var meatMeSeverUrl = "http://139.162.24.178/api/v1/plants/recognize?auth_token="
     var googleAPIKey = "AIzaSyA--Sr2_nkJIPnDWQDz-2-YSebGLJC4S1Q"
     var googleURL: URL {
@@ -70,7 +70,8 @@ class FindMeatCameraController: UIViewController{
 //        spinner.hidesWhenStopped = true
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        //塞一個背景圖
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "背景")!)
         //第一次啟動相機完畢後isFirstLunchCamera改成false
         if isFirstLunchCamera == true{
             takePhoto()
@@ -84,6 +85,7 @@ class FindMeatCameraController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToSelectImagePage"{
             let destination = segue.destination as! SecectImageController
@@ -100,7 +102,7 @@ class FindMeatCameraController: UIViewController{
                 destination.errorMessage = "請問您是在自拍嗎？"
             }
             else{
-                destination.errorMessage = "我不知道您拍到了什麼"
+                destination.errorMessage = "跟伺服器連線出現錯誤，請重試"
             }
         }
     }
@@ -119,15 +121,7 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
         if imagePicker.sourceType == .camera{
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             meatImageView.image = image
-           
-//            let data = UIImageJPEGRepresentation(image, 0.9)
-//            let url = setSavePhotoUrl()
-//            do{
-//                try data?.write(to: url!)
-//            }catch{
-//                print("存擋失敗")
-//            }
-            //把照下來得照片轉成base64
+            //把照下來照片轉成base64
             let binaryImageData = base64EncodeImage(image)
             //傳送給Google解析
             createRequest(with: binaryImageData)
@@ -138,13 +132,11 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
                 self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
                 timer.invalidate()
             })
-            
-            self.dismiss(animated: true, completion: {
-            })
+            self.dismiss(animated: true, completion: nil)
         }
         //啟動相簿
         if imagePicker.sourceType == .photoLibrary{
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
                 meatImageView.image = pickedImage
                 //轉成Base64格式後傳給Google後得到Request
                 let binaryImageData = base64EncodeImage(pickedImage)
@@ -156,7 +148,6 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
                     self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
                     timer.invalidate()
                 })
-            }
             dismiss(animated: true, completion: nil)
         }
     }
@@ -313,11 +304,11 @@ extension FindMeatCameraController {
                 "features": [
                     [
                         "type": "LABEL_DETECTION",
-                        "maxResults": 6
+                        "maxResults": 9
                     ],
                     [
                         "type": "FACE_DETECTION",
-                        "maxResults": 6
+                        "maxResults": 9
                     ]
                 ]
             ]
@@ -363,10 +354,19 @@ extension FindMeatCameraController{
         //把從Google拿到的data包給server
         let postTask = URLSession.shared.uploadTask(with: postRequest, from: resultOfPicData, completionHandler:{ (data:Data?, response:URLResponse?, error:Error?) -> Void in
             if error != nil{
-                print("post出錯")
-                self.normalStatus()
+                print("post出錯 \(error?.localizedDescription)")
+                //這邊得要用主佇列的非同步進行畫面切換
+                
+                DispatchQueue.main.async {
+                    self.normalStatus()
+                    self.performSegue(withIdentifier: "GoNoMeatPage", sender: nil)
+                }
                 return
             }
+            if let backResponse = response{
+                print("****\(response!)*****")
+            }
+            
             if let backData = data{
                 //把結果轉成JSON存入selectedDataAndArticleData
                 self.selectedDataAndArticleData = JSON(data: backData)
@@ -380,7 +380,7 @@ extension FindMeatCameraController{
                     if self.backMessageFromServer == "notPlant"||self.backMessageFromServer == "isPerson"{
                         self.performSegue(withIdentifier: "GoNoMeatPage", sender: nil)
                     }
-                    else if self.backMessageFromServer == "isPlant"{
+                    else if self.backMessageFromServer == "isPlant"||self.backMessageFromServer == "isMeat"{
                         self.performSegue(withIdentifier: "GoToSelectImagePage", sender: nil)
                     }
                 }
@@ -389,36 +389,41 @@ extension FindMeatCameraController{
         postTask.resume()
     }
      //從MeatME得到token代入meatMeSeverToken
-    func getTokenFromServer(loginUrlString:String){
-        let url = URL(string: loginUrlString)
-        var request = URLRequest(url: url!)
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        //設定body內容
-        let postString = "email=superuser@meatme.com&password=finalproject"
-        //把body內容轉換成Data
-        let postStringData = postString.data(using: String.Encoding.utf8)
-        let postTask = URLSession.shared.uploadTask(with: request, from: postStringData, completionHandler:{ (data:Data?, response:URLResponse?, error:Error?) -> Void in
-            if error != nil{
-                print("post出錯")
-                return
-            }
-            if let backData = data{
-                print(backData)
-                let jsonData = JSON(data:backData).dictionaryValue
-                if let tokenString = jsonData["auth_token"]?.stringValue{
-                    print(tokenString)
-                    self.meatMeSeverToken = tokenString
-                }
-            }
-        })
-        postTask.resume()
-    }
+//    func getTokenFromServer(loginUrlString:String){
+//        let url = URL(string: loginUrlString)
+//        var request = URLRequest(url: url!)
+//        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        request.httpMethod = "POST"
+//        //設定body內容
+//        let postString = "email=superuser@meatme.com&password=finalproject"
+//        //把body內容轉換成Data
+//        let postStringData = postString.data(using: String.Encoding.utf8)
+//        let postTask = URLSession.shared.uploadTask(with: request, from: postStringData, completionHandler:{ (data:Data?, response:URLResponse?, error:Error?) -> Void in
+//            if error != nil{
+//                print("post出錯 \(error?.localizedDescription)")
+//                return
+//            }
+//            if let backData = data{
+//                print(backData)
+//                let jsonData = JSON(data:backData).dictionaryValue
+//                if let tokenString = jsonData["auth_token"]?.stringValue{
+//                    print(tokenString)
+//                    self.meatMeSeverToken = tokenString
+//                }
+//            }
+//        })
+//        postTask.resume()
+//    }
 }
 
 //
 extension FindMeatCameraController{
     func loadingStatus(){
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let imageView = UIImageView(frame: CGRect(x:0, y:0, width:width, height:height))
+        imageView.image = UIImage(named: "有肉")
+        imageView.contentMode = UIViewContentMode.scaleAspectFill
         //Loading按鈕和圖片顯示，拍照跟讀相簿按鈕消失
         self.nowLoading.isHidden = false
         self.meatImageView.isHidden = false

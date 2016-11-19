@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6ED06DBD608E4E644E80D686 /* Pods_meatme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C18E85BB6CD38A2B2CAB207 /* Pods_meatme.framework */; };
 		D00D30241DD997AA00275ADC /* SecectImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D30231DD997AA00275ADC /* SecectImageController.swift */; };
-		D02439DB1DD958A70009ED17 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02439DA1DD958A70009ED17 /* LoadingViewController.swift */; };
+		D01B508E1DDD8CFC000B19A6 /* Assets 14-59-27-432.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */; };
 		D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D65E1DD4B65300025F27 /* forumListCell.swift */; };
 		D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D6631DD4BAC500025F27 /* forumListController.swift */; };
 		D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */; };
@@ -17,7 +17,6 @@
 		D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */; };
 		D0818FCF1DBE49B0002D3DB1 /* HotAndNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */; };
 		D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD01DBE49B0002D3DB1 /* Main.storyboard */; };
-		D0818FD41DBE49B0002D3DB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD31DBE49B0002D3DB1 /* Assets.xcassets */; };
 		D0818FD71DBE49B0002D3DB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD51DBE49B0002D3DB1 /* LaunchScreen.storyboard */; };
 		D0DE33151DCEF44E00A3D126 /* hotSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */; };
 		D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */; };
@@ -34,7 +33,7 @@
 		8DC04463B6985A398ECDE9AF /* Pods-meatme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.release.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.release.xcconfig"; sourceTree = "<group>"; };
 		94D0D0397DAE8F1E13D6FDC0 /* Pods-meatme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.debug.xcconfig"; sourceTree = "<group>"; };
 		D00D30231DD997AA00275ADC /* SecectImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecectImageController.swift; sourceTree = "<group>"; };
-		D02439DA1DD958A70009ED17 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 14-59-27-432.xcassets"; sourceTree = "<group>"; };
 		D025D65D1DD49A5900025F27 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		D025D65E1DD4B65300025F27 /* forumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListCell.swift; sourceTree = "<group>"; };
 		D025D6631DD4BAC500025F27 /* forumListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListController.swift; sourceTree = "<group>"; };
@@ -44,7 +43,6 @@
 		D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotAndNewViewController.swift; sourceTree = "<group>"; };
 		D0818FD11DBE49B0002D3DB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D0818FD31DBE49B0002D3DB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0818FD61DBE49B0002D3DB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0818FD81DBE49B0002D3DB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotSiteCell.swift; sourceTree = "<group>"; };
@@ -125,8 +123,8 @@
 				D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */,
 				D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */,
 				D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */,
+				D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */,
 				D0818FD01DBE49B0002D3DB1 /* Main.storyboard */,
-				D0818FD31DBE49B0002D3DB1 /* Assets.xcassets */,
 				D0818FD51DBE49B0002D3DB1 /* LaunchScreen.storyboard */,
 				D0818FD81DBE49B0002D3DB1 /* Info.plist */,
 				D0F015021DD863200093D5CD /* 多肉植物01.jpg */,
@@ -151,7 +149,6 @@
 				D00D30231DD997AA00275ADC /* SecectImageController.swift */,
 				D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */,
 				D0EF9A691DD6F1C90060A67B /* FindMeatCameraController.swift */,
-				D02439DA1DD958A70009ED17 /* LoadingViewController.swift */,
 			);
 			name = FindMeatCamera;
 			sourceTree = "<group>";
@@ -220,9 +217,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0818FD71DBE49B0002D3DB1 /* LaunchScreen.storyboard in Resources */,
-				D0818FD41DBE49B0002D3DB1 /* Assets.xcassets in Resources */,
 				D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */,
 				D0F015031DD863200093D5CD /* 多肉植物01.jpg in Resources */,
+				D01B508E1DDD8CFC000B19A6 /* Assets 14-59-27-432.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +291,6 @@
 				D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */,
 				D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */,
 				D0EF9A631DD55B720060A67B /* forumArticleCommentCell.swift in Sources */,
-				D02439DB1DD958A70009ED17 /* LoadingViewController.swift in Sources */,
 				D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

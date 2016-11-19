@@ -42,6 +42,12 @@ class SecectImageController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToForumList"{
+            let destination = segue.destination as! forumListController
+            destination.getDataFromServer = getDataFromServer
+        }
+    }
 }
 extension SecectImageController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
