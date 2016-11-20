@@ -21,6 +21,8 @@ class FindMeatCameraController: UIViewController{
     var googleURL: URL {
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
+    //判斷工程模式有沒有被開啟
+    var engineerModeIsLunch = false
     //從meatme Server拿到的Data
     var selectedDataAndArticleData:JSON?
     var backMessageFromServer = "有什麼事情出錯了喔"
@@ -37,6 +39,17 @@ class FindMeatCameraController: UIViewController{
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+    }
+    @IBAction func engineerModeButton(_ sender: UIButton) {
+        if engineerModeIsLunch == false{
+            self.labelResults.isHidden = false
+            self.faceResults.isHidden = false
+            self.engineerModeIsLunch = true
+        }else{
+            self.labelResults.isHidden = true
+            self.faceResults.isHidden = true
+            self.engineerModeIsLunch = false
+        }
     }
     //傳送JSON資料給Sever的按鈕：
     @IBOutlet weak var postJSON: UIButton!
@@ -65,18 +78,20 @@ class FindMeatCameraController: UIViewController{
         super.viewDidLoad()
         //GoogleVision相關
         imagePicker.delegate = self
-        
-       
 //        spinner.hidesWhenStopped = true
     }
     override func viewDidAppear(_ animated: Bool) {
-        //塞一個背景圖
+//        let storyboard = UIStoryboard(name: "Lunch", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "LunchScreen") as! LunchScreenController
+//        present(viewController, animated: false, completion: nil)
+//        塞一個背景圖
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "背景")!)
         //第一次啟動相機完畢後isFirstLunchCamera改成false
         if isFirstLunchCamera == true{
             takePhoto()
             isFirstLunchCamera = false
         }
+        
     }
     override func viewDidLayoutSubviews() {
            }
@@ -363,7 +378,7 @@ extension FindMeatCameraController{
                 }
                 return
             }
-            if let backResponse = response{
+            if response != nil{
                 print("****\(response!)*****")
             }
             
@@ -419,11 +434,6 @@ extension FindMeatCameraController{
 //
 extension FindMeatCameraController{
     func loadingStatus(){
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        let imageView = UIImageView(frame: CGRect(x:0, y:0, width:width, height:height))
-        imageView.image = UIImage(named: "有肉")
-        imageView.contentMode = UIViewContentMode.scaleAspectFill
         //Loading按鈕和圖片顯示，拍照跟讀相簿按鈕消失
         self.nowLoading.isHidden = false
         self.meatImageView.isHidden = false

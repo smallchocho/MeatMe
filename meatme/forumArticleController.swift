@@ -43,7 +43,7 @@ class forumArticleController: UIViewController {
         //把tableView的row高度設定為依照內容自動調整
         self.forumArticleTableView.rowHeight = UITableViewAutomaticDimension
         //這邊是給一個可能預測的高度
-        self.forumArticleTableView.estimatedRowHeight = 1000
+        self.forumArticleTableView.estimatedRowHeight = 700
         self.forumArticleTableView.delegate = self
         self.forumArticleTableView.dataSource = self
         if getCommentFromServer == nil{
@@ -79,6 +79,11 @@ extension forumArticleController:UITableViewDelegate,UITableViewDataSource{
                 cell.articleAuthorName.text = getDataFromServer?["plantArticles"][selectedIndexpathAtArticleList.row]["articleAuthorName"].stringValue
                 let imageUrl = URL(string:(getDataFromServer?["plantArticles"][selectedIndexpathAtArticleList.row]["articleImage"].stringValue)!)
                 cell.articleImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "讀取中"))
+                
+                let authorImageUrl = URL(string:(getDataFromServer?["plantArticles"][selectedIndexpathAtArticleList.row]["articleAuthorImage"].stringValue)!)
+                cell.articleAuthorImage.sd_setImage(with: authorImageUrl, placeholderImage: UIImage(named: "讀取中"))
+                cell.articleAuthorImage.layer.cornerRadius = cell.articleAuthorImage.frame.height
+                
 //                cell.articleImage.translatesAutoresizingMaskIntoConstraints = true
 //                cell.articleImage.frame = CGRect.init(x: cell.articleImage.frame.origin.x , y: cell.articleImage.frame.origin.y, width: 280, height: 160)
                 cell.articleDate.text = getDataFromServer?["plantArticles"][selectedIndexpathAtArticleList.row]["articleDate"].stringValue

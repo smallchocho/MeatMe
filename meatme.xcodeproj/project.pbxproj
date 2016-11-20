@@ -9,18 +9,17 @@
 /* Begin PBXBuildFile section */
 		6ED06DBD608E4E644E80D686 /* Pods_meatme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C18E85BB6CD38A2B2CAB207 /* Pods_meatme.framework */; };
 		D00D30241DD997AA00275ADC /* SecectImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D30231DD997AA00275ADC /* SecectImageController.swift */; };
-		D01B508E1DDD8CFC000B19A6 /* Assets 14-59-27-432.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */; };
 		D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D65E1DD4B65300025F27 /* forumListCell.swift */; };
 		D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025D6631DD4BAC500025F27 /* forumListController.swift */; };
 		D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */; };
 		D0592BEE1DDAFB5200D3CEF6 /* NoMeatPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */; };
+		D07040031DE1BAD7005F2FC1 /* CreateArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07040021DE1BAD7005F2FC1 /* CreateArticleController.swift */; };
 		D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */; };
 		D0818FCF1DBE49B0002D3DB1 /* HotAndNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */; };
 		D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD01DBE49B0002D3DB1 /* Main.storyboard */; };
 		D0818FD71DBE49B0002D3DB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0818FD51DBE49B0002D3DB1 /* LaunchScreen.storyboard */; };
+		D0A6754E1DE0829C00AAD912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A6754D1DE0829C00AAD912 /* Assets.xcassets */; };
 		D0DE33151DCEF44E00A3D126 /* hotSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */; };
-		D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */; };
-		D0E5C4301DD2D59800DD68A9 /* MapTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C42F1DD2D59800DD68A9 /* MapTask.swift */; };
 		D0EF9A611DD55B0D0060A67B /* forumArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A601DD55B0D0060A67B /* forumArticleCell.swift */; };
 		D0EF9A631DD55B720060A67B /* forumArticleCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */; };
 		D0EF9A651DD567110060A67B /* forumArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EF9A641DD567110060A67B /* forumArticleController.swift */; };
@@ -33,21 +32,20 @@
 		8DC04463B6985A398ECDE9AF /* Pods-meatme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.release.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.release.xcconfig"; sourceTree = "<group>"; };
 		94D0D0397DAE8F1E13D6FDC0 /* Pods-meatme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meatme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meatme/Pods-meatme.debug.xcconfig"; sourceTree = "<group>"; };
 		D00D30231DD997AA00275ADC /* SecectImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecectImageController.swift; sourceTree = "<group>"; };
-		D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 14-59-27-432.xcassets"; sourceTree = "<group>"; };
 		D025D65D1DD49A5900025F27 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		D025D65E1DD4B65300025F27 /* forumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListCell.swift; sourceTree = "<group>"; };
 		D025D6631DD4BAC500025F27 /* forumListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumListController.swift; sourceTree = "<group>"; };
 		D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newSiteCell.swift; sourceTree = "<group>"; };
 		D0592BED1DDAFB5200D3CEF6 /* NoMeatPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoMeatPageController.swift; sourceTree = "<group>"; };
+		D07040021DE1BAD7005F2FC1 /* CreateArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateArticleController.swift; sourceTree = "<group>"; };
 		D0818FC91DBE49B0002D3DB1 /* meatme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meatme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0818FCC1DBE49B0002D3DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotAndNewViewController.swift; sourceTree = "<group>"; };
 		D0818FD11DBE49B0002D3DB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0818FD61DBE49B0002D3DB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0818FD81DBE49B0002D3DB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0A6754D1DE0829C00AAD912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotSiteCell.swift; sourceTree = "<group>"; };
-		D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		D0E5C42F1DD2D59800DD68A9 /* MapTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTask.swift; sourceTree = "<group>"; };
 		D0EF9A601DD55B0D0060A67B /* forumArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleCell.swift; sourceTree = "<group>"; };
 		D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleCommentCell.swift; sourceTree = "<group>"; };
 		D0EF9A641DD567110060A67B /* forumArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forumArticleController.swift; sourceTree = "<group>"; };
@@ -92,6 +90,7 @@
 				D0EF9A621DD55B720060A67B /* forumArticleCommentCell.swift */,
 				D025D6631DD4BAC500025F27 /* forumListController.swift */,
 				D0EF9A641DD567110060A67B /* forumArticleController.swift */,
+				D07040021DE1BAD7005F2FC1 /* CreateArticleController.swift */,
 			);
 			name = Forum;
 			sourceTree = "<group>";
@@ -123,24 +122,14 @@
 				D0818FCE1DBE49B0002D3DB1 /* HotAndNewViewController.swift */,
 				D0DE33141DCEF44E00A3D126 /* hotSiteCell.swift */,
 				D02AA1611DD0CAE400BF1B09 /* newSiteCell.swift */,
-				D01B508D1DDD8CFB000B19A6 /* Assets 14-59-27-432.xcassets */,
 				D0818FD01DBE49B0002D3DB1 /* Main.storyboard */,
 				D0818FD51DBE49B0002D3DB1 /* LaunchScreen.storyboard */,
+				D0A6754D1DE0829C00AAD912 /* Assets.xcassets */,
 				D0818FD81DBE49B0002D3DB1 /* Info.plist */,
 				D0F015021DD863200093D5CD /* 多肉植物01.jpg */,
-				D0E5C42E1DD2D57E00DD68A9 /* Map */,
 				D025D65D1DD49A5900025F27 /* MyPlayground.playground */,
 			);
 			path = meatme;
-			sourceTree = "<group>";
-		};
-		D0E5C42E1DD2D57E00DD68A9 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				D0E5C42F1DD2D59800DD68A9 /* MapTask.swift */,
-				D0E5C42C1DD2D4D500DD68A9 /* MapViewController.swift */,
-			);
-			name = Map;
 			sourceTree = "<group>";
 		};
 		D0EF9A681DD6F1970060A67B /* FindMeatCamera */ = {
@@ -219,7 +208,7 @@
 				D0818FD71DBE49B0002D3DB1 /* LaunchScreen.storyboard in Resources */,
 				D0818FD21DBE49B0002D3DB1 /* Main.storyboard in Resources */,
 				D0F015031DD863200093D5CD /* 多肉植物01.jpg in Resources */,
-				D01B508E1DDD8CFC000B19A6 /* Assets 14-59-27-432.xcassets in Resources */,
+				D0A6754E1DE0829C00AAD912 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +269,7 @@
 			files = (
 				D0818FCF1DBE49B0002D3DB1 /* HotAndNewViewController.swift in Sources */,
 				D0EF9A651DD567110060A67B /* forumArticleController.swift in Sources */,
-				D0E5C4301DD2D59800DD68A9 /* MapTask.swift in Sources */,
+				D07040031DE1BAD7005F2FC1 /* CreateArticleController.swift in Sources */,
 				D0EF9A611DD55B0D0060A67B /* forumArticleCell.swift in Sources */,
 				D00D30241DD997AA00275ADC /* SecectImageController.swift in Sources */,
 				D0818FCD1DBE49B0002D3DB1 /* AppDelegate.swift in Sources */,
@@ -289,7 +278,6 @@
 				D0592BEE1DDAFB5200D3CEF6 /* NoMeatPageController.swift in Sources */,
 				D025D65F1DD4B65300025F27 /* forumListCell.swift in Sources */,
 				D025D6641DD4BAC500025F27 /* forumListController.swift in Sources */,
-				D0E5C42D1DD2D4D500DD68A9 /* MapViewController.swift in Sources */,
 				D0EF9A631DD55B720060A67B /* forumArticleCommentCell.swift in Sources */,
 				D02AA1621DD0CAE400BF1B09 /* newSiteCell.swift in Sources */,
 			);
@@ -358,7 +346,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -403,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -420,10 +408,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = meatme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.meatme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -435,10 +425,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = meatme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.meatme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
