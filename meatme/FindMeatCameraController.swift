@@ -10,6 +10,9 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 class FindMeatCameraController: UIViewController{
+    //程式執行條件判斷相關的函式
+    //判斷工程模式有沒有被開啟
+    var engineerModeIsLunch = false
     //GoogleVision變數
     let imagePicker = UIImagePickerController()
     let session = URLSession.shared
@@ -21,11 +24,9 @@ class FindMeatCameraController: UIViewController{
     var googleURL: URL {
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
-    //判斷工程模式有沒有被開啟
-    var engineerModeIsLunch = false
     //從meatme Server拿到的Data
     var selectedDataAndArticleData:JSON?
-    var backMessageFromServer = "有什麼事情出錯了喔"
+    var backMessageFromServer = ""
     //是否第一次啟動相機的布林
     var isFirstLunchCamera = true
     //GoogleVision解析後顯示在畫面上的結果
@@ -40,6 +41,7 @@ class FindMeatCameraController: UIViewController{
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    //打開或關閉工程模式
     @IBAction func engineerModeButton(_ sender: UIButton) {
         if engineerModeIsLunch == false{
             self.labelResults.isHidden = false
@@ -76,9 +78,13 @@ class FindMeatCameraController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //可延遲啟動畫面消失的時間
+        Thread.sleep(forTimeInterval: 2)
         //GoogleVision相關
         imagePicker.delegate = self
 //        spinner.hidesWhenStopped = true
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
 //        let storyboard = UIStoryboard(name: "Lunch", bundle: nil)
@@ -91,11 +97,10 @@ class FindMeatCameraController: UIViewController{
             takePhoto()
             isFirstLunchCamera = false
         }
-        
     }
-    override func viewDidLayoutSubviews() {
-           }
-    override func viewWillDisappear(_ animated: Bool) {
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        backToDefaultData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -143,10 +148,10 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
             //Loading按鈕顯示，拍照跟讀相簿按鈕消失
             loadingStatus()
             //3秒後傳送request給後台
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
-                self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
-                timer.invalidate()
-            })
+//            Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
+//                self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
+//                timer.invalidate()
+//            })
             self.dismiss(animated: true, completion: nil)
         }
         //啟動相簿
@@ -159,10 +164,10 @@ extension  FindMeatCameraController:UIImagePickerControllerDelegate,UINavigation
                 //Loading按鈕和圖片顯示，拍照跟讀相簿按鈕消失
                 loadingStatus()
                 //3秒後傳送request給後台
-                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
-                    self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
-                    timer.invalidate()
-                })
+//                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer:Timer) in
+//                    self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
+//                    timer.invalidate()
+//                })
             dismiss(animated: true, completion: nil)
         }
     }
@@ -199,7 +204,7 @@ extension FindMeatCameraController {
             let json = JSON(data: dataToParse)
             let outprint = json.dictionaryObject!
             
-            print("=================\n\(outprint)\n===================")
+//            print("=================\n\(outprint)\n===================")
             let errorObj: JSON = json["error"]
             
 //            self.spinner.stopAnimating()
@@ -213,7 +218,7 @@ extension FindMeatCameraController {
                 self.labelResults.text = "Error code \(errorObj["code"]): \(errorObj["message"])"
             } else {
                 // Parse the response
-                print(json)
+//                print(json)
                 let responses: JSON = json["responses"][0]
                 
                 // Get face annotations
@@ -283,12 +288,7 @@ extension FindMeatCameraController {
         UIGraphicsEndImageContext()
         return resizedImage!
     }
-}
-
-
-/// Networking
-
-extension FindMeatCameraController {
+    
     func base64EncodeImage(_ image: UIImage) -> String {
         var imagedata = UIImagePNGRepresentation(image)
         
@@ -301,6 +301,13 @@ extension FindMeatCameraController {
         
         return imagedata!.base64EncodedString(options: .endLineWithCarriageReturn)
     }
+    
+}
+
+
+/// Networking
+
+extension FindMeatCameraController {
     
     func createRequest(with imageBase64: String) {
         // Create our request URL
@@ -345,15 +352,23 @@ extension FindMeatCameraController {
         let task: URLSessionDataTask = session.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "")
+                print("===跟Google連線錯誤===")
+                //這邊得要用主佇列的非同步進行畫面切換
+                DispatchQueue.main.async {
+                    self.normalStatus()
+                    self.performSegue(withIdentifier: "GoNoMeatPage", sender: nil)
+                }
                 return
             }
             self.resultOfPicData = data
+            //解讀從Google回傳回來的data
             self.analyzeResults(data)
+            print("===跟Google連線成功===")
+            //執行完跟Google連線後執行向MeatMe連線的函式
+            self.toServerRequest(urlString: self.meatMeSeverUrl, httpMethod: "POST", contentType: "application/json",token: self.meatMeSeverToken)
         }
         task.resume()
     }
-    
-    
 }
 //連接MeatME用
 extension FindMeatCameraController{
@@ -369,9 +384,8 @@ extension FindMeatCameraController{
         //把從Google拿到的data包給server
         let postTask = URLSession.shared.uploadTask(with: postRequest, from: resultOfPicData, completionHandler:{ (data:Data?, response:URLResponse?, error:Error?) -> Void in
             if error != nil{
-                print("post出錯 \(error?.localizedDescription)")
+                print("===向MeatMeSever連線出錯=== \(error?.localizedDescription)")
                 //這邊得要用主佇列的非同步進行畫面切換
-                
                 DispatchQueue.main.async {
                     self.normalStatus()
                     self.performSegue(withIdentifier: "GoNoMeatPage", sender: nil)
@@ -379,10 +393,11 @@ extension FindMeatCameraController{
                 return
             }
             if response != nil{
-                print("****\(response!)*****")
+//                print("****\(response!)*****")
             }
             
             if let backData = data{
+                print("===向MeatMeSever連線成功===")
                 //把結果轉成JSON存入selectedDataAndArticleData
                 self.selectedDataAndArticleData = JSON(data: backData)
                 let jsonBackData =  JSON(data: backData).dictionaryObject
@@ -446,6 +461,12 @@ extension FindMeatCameraController{
         self.meatImageView.isHidden = false
         self.loadImageButtonTapped.isHidden = false
         self.takePhotoButton.isHidden = false
+    }
+    func backToDefaultData(){
+        self.backMessageFromServer = ""
+        self.resultOfPicData = nil
+        self.selectedDataAndArticleData = nil
+         print("===資料回歸初始值===")
     }
 }
 
